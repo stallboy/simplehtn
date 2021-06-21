@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="simplehtn" default="dist">
+    <property name="src" value="src/"/>
+    <property name="build" value="classes/"/>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="compile">
+        <exec dir="src/" executable="java">
+            <arg line="-jar ..\antlr-4.9.2-complete.jar -visitor -package simplehtn -o ..\gen\ simplehtn\JSHOP2.g4"/>
+        </exec>
+
+        <mkdir dir="${build}"/>
+        <javac encoding="UTF-8" destdir="${build}" includeantruntime="false" debug="true"
+               classpath="antlr-4.9.2-complete.jar"
+               debuglevel="lines,source">
+            <src path="${src}"/>
+            <src path="gen/"/>
+        </javac>
+    </target>
+
+    <target name="dist" depends="compile">
+        <jar destfile="simplehtn.jar" basedir="${build}" manifest="${src}/MANIFEST.MF">
+            <zipgroupfileset dir="." includes="antlr-4.9.2-complete.jar"/>
+        </jar>
+
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="test" depends="dist">
+        <exec dir="." executable="java">
+            <arg line="-Xss128m -jar simplehtn.jar examples\blocks.lisp examples\blocks_problem.lisp"/>
+        </exec>
+    </target>
+</project>
