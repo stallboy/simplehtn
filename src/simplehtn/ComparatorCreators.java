@@ -3,23 +3,10 @@ package simplehtn;
 import java.util.Comparator;
 
 public class ComparatorCreators {
+    public static final ComparatorCreator less = Less::new;
+    public static final ComparatorCreator more = More::new;
 
-    public static ComparatorCreator less;
-    public static ComparatorCreator more;
-
-    static {
-        less = CompLess::new;
-        more = CompMore::new;
-    }
-
-
-    static class CompLess implements Comparator<Term[]> {
-        private final int varIdx;
-
-        private CompLess(int varIdx) {
-            this.varIdx = varIdx;
-        }
-
+    static record Less(int varIdx) implements Comparator<Term[]> {
         public int compare(Term[] t1, Term[] t2) {
             double n1 = ((TermNumber) t1[varIdx]).getNumber();
             double n2 = ((TermNumber) t2[varIdx]).getNumber();
@@ -27,20 +14,11 @@ public class ComparatorCreators {
         }
     }
 
-
-    static class CompMore implements Comparator<Term[]> {
-        private final int varIdx;
-
-        private CompMore(int varIdxIn) {
-            varIdx = varIdxIn;
-        }
-
+    static record More(int varIdx) implements Comparator<Term[]> {
         public int compare(Term[] t1, Term[] t2) {
             double n1 = ((TermNumber) t1[varIdx]).getNumber();
             double n2 = ((TermNumber) t2[varIdx]).getNumber();
             return Double.compare(n2, n1);
         }
     }
-
-
 }

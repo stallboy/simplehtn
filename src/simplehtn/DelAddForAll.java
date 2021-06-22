@@ -17,7 +17,7 @@ public class DelAddForAll extends DelAddElement {
         Term[] nextB;
         pre.resetNextSatisfier(s, binding);
         while ((nextB = pre.nextSatisfier(s)) != null) {
-            Term.mergeIfAbsent(nextB, binding);
+            Term.merge(nextB, binding);
             for (Predicate atom : atoms) {
                 Predicate p = atom.applySubstitution(nextB);
 
@@ -32,7 +32,7 @@ public class DelAddForAll extends DelAddElement {
         Term[] nextB;
         pre.resetNextSatisfier(s, binding);
         while ((nextB = pre.nextSatisfier(s)) != null) {
-            Term.mergeIfAbsent(nextB, binding);
+            Term.merge(nextB, binding);
             for (Predicate atom : atoms) {
                 Predicate p = atom.applySubstitution(nextB);
                 if (s.isProtected(p))

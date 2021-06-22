@@ -41,7 +41,7 @@ public class PreconditionAnd2 extends Precondition {
                 if (b1 == null)
                     return null;
                 if (b0 != null) {
-                    Term.mergeIfAbsent(b1, b0);
+                    Term.merge(b1, b0);
                 }
 
                 ele2.resetNextSatisfier(state, b1);

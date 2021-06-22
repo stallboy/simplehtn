@@ -1,40 +1,19 @@
 package simplehtn;
 
-
 public class Calculates {
+    public static final Div div = new Div();
+    public static final Equal equal = new Equal();
+    public static final Less less = new Less();
+    public static final LessEq lessEq = new LessEq();
+    public static final Member member = new Member();
+    public static final Minus minus = new Minus();
+    public static final More more = new More();
+    public static final MoreEq moreEq = new MoreEq();
+    public static final Mult mult = new Mult();
+    public static final NotEq notEq = new NotEq();
+    public static final Plus plus = new Plus();
+    public static final Power power = new Power();
 
-    public static Div div = new Div();
-
-    public static Equal equal = new Equal();
-
-    public static Less less = new Less();
-
-    public static LessEq lessEq = new LessEq();
-
-    public static Member member = new Member();
-
-    public static Minus minus = new Minus();
-
-    public static More more = new More();
-
-    public static MoreEq moreEq = new MoreEq();
-
-    public static Mult mult = new Mult();
-
-    public static NotEq notEq = new NotEq();
-
-    public static Plus plus = new Plus();
-
-    public static Power power = new Power();
-
-    /**
-     * Each code call of the form <code>(call / &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class.
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class Div implements Calculate {
         /**
          * This function executes the code call and returns the result by dividing
@@ -54,14 +33,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call = &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class.
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class Equal implements Calculate {
         /**
          * This function executes the code call and returns <code>NIL</code> if not
@@ -87,14 +58,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call &#60; &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class Less implements Calculate {
         /**
          * This function executes the code call and returns something other than
@@ -120,14 +83,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call &#60;= &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class LessEq implements Calculate {
         /**
          * This function executes the code call and returns something other than
@@ -153,14 +108,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call Member &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class Member implements Calculate {
         /**
          * This function executes the code call and returns <code>NIL</code> if its
@@ -182,14 +129,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call - &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class.
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class Minus implements Calculate {
         /**
          * This function executes the code call and returns the result by
@@ -209,14 +148,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call &#62; &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class More implements Calculate {
         /**
          * This function executes the code call and returns something other than
@@ -242,14 +173,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call &#62;= &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class MoreEq implements Calculate {
         /**
          * This function executes the code call and returns something other than
@@ -275,14 +198,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call * &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class.
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class Mult implements Calculate {
         /**
          * This function executes the code call and returns the product of all its
@@ -300,14 +215,6 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call &#33;= &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class.
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
     static class NotEq implements Calculate {
         /**
          * This function executes the code call and returns something other than
@@ -333,14 +240,7 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call + &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class.
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
+
     static class Plus implements Calculate {
         /**
          * This function executes the code call and returns the sum of all its
@@ -358,14 +258,7 @@ public class Calculates {
         }
     }
 
-    /**
-     * Each code call of the form <code>(call ^ &#46;&#46;&#46;)</code> is
-     * implemented by an object of this class.
-     *
-     * @author Okhtay Ilghami
-     * @author <a href="http://www.cs.umd.edu/~okhtay">http://www.cs.umd.edu/~okhtay</a>
-     * @version 1.0.3
-     */
+
     static class Power implements Calculate {
         /**
          * This function executes the code call and returns the result by raising

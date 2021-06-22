@@ -15,7 +15,7 @@ import java.util.List;
  * -----------                          ---------------------
  * | Unified | --resetNextSatisfier--> | NextSatisfierReady |
  * ----------              ^           ---------------------
- * -                      |--------------------|
+ * -                       |--------------------|
  * 在NextSatisfierReady状态，调用nextSatisfier方法 返回下一个满足当前状态的satisfier
  */
 public abstract class Precondition {

@@ -37,7 +37,7 @@ public class PreconditionForAll extends Precondition {
         premise.resetNextSatisfier(state, binding);
         Arrays.fill(currentBinding, null);
         if (binding != null) {
-            Term.mergeIfAbsent(currentBinding, binding);
+            Term.merge(currentBinding, binding);
         }
     }
 
@@ -46,7 +46,7 @@ public class PreconditionForAll extends Precondition {
         Term[] satisfier;
 
         while ((satisfier = premise.nextSatisfier(state)) != null) {
-            Term.mergeIfAbsent(satisfier, currentBinding);
+            Term.merge(satisfier, currentBinding);
             consequence.resetNextSatisfier(state, satisfier);
             if (consequence.nextSatisfier(state) == null) {
                 //-- If not, return null, meaning that the ForAll logical expression

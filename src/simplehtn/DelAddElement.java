@@ -6,6 +6,5 @@ public abstract class DelAddElement {
      */
     public abstract boolean del(State s, Term[] binding, StateChanged changed);
 
-
     public abstract void add(State s, Term[] binding, StateChanged changed);
 }

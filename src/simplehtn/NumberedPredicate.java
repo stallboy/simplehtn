@@ -50,6 +50,10 @@ public class NumberedPredicate {
             return false;
     }
 
+    public Predicate getPredicate() {
+        return pre;
+    }
+    
     public int getHead() {
         return pre.getHead();
     }

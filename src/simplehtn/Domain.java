@@ -23,9 +23,17 @@ public class Domain {
      * 让axioms的名称位于constantSymbols最前面
      */
     final List<List<Axiom>> axioms;
+    /**
+     * 注意axiom的ID也是constant的，放在最开头
+     */
     final Map<String, Integer> constSymbols;
 
 
+    /**
+     * 在构造domain，problem之前先收集使用的symbol信息，包括原子任务名，复合任务名，常量，以及变量
+     * domain的变量是在DomainElement里
+     * 目的是为了给这些符号编号用int来标识，这样runtime快点
+     */
     public Domain(String name, Set<String> primitives, Set<String> compounds, Set<String> axiomConstants, Set<String> constants) {
         this.name = name;
 

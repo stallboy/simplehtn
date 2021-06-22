@@ -66,7 +66,7 @@ public class Creator {
     //------------------------------- domain/problem 转换为领域或问题对象 ------------------------------
 
     private void convert() {
-        Collector col = new Collector(shopCtx);
+        SymbolCollector col = new SymbolCollector(shopCtx);
         col.walk();
 
         isDomain = col.isDomain;

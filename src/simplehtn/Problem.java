@@ -12,7 +12,13 @@ public class Problem {
     List<Predicate> state;
     TaskList taskList;
 
+    /**
+     * 先包含domain里的constant，再包含problem里的
+     */
     final Map<String, Integer> constSymbols;
+    /**
+     * var只会在taskList里出现，大多数情况下应该不会有，但算法应该是支持的
+     */
     final Map<String, Integer> varSymbols;
 
 

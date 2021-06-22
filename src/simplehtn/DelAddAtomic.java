@@ -1,13 +1,11 @@
 package simplehtn;
 
 public class DelAddAtomic extends DelAddElement {
-
     private final Predicate atom;
 
     public DelAddAtomic(Predicate atomIn) {
         atom = atomIn;
     }
-
 
     @Override
     public void add(State s, Term[] binding, StateChanged changed) {
@@ -15,7 +13,6 @@ public class DelAddAtomic extends DelAddElement {
         if (s.add(p))
             changed.add.add(p);
     }
-
 
     public boolean del(State s, Term[] binding, StateChanged changed) {
         Predicate p = atom.applySubstitution(binding);

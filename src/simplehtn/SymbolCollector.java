@@ -12,7 +12,7 @@ import static simplehtn.JSHOP2Parser.*;
 /**
  * 符号信息收集器
  */
-public class Collector extends JSHOP2BaseListener {
+public class SymbolCollector extends JSHOP2BaseListener {
 
     final ShopContext shopCtx;
     /**
@@ -29,7 +29,7 @@ public class Collector extends JSHOP2BaseListener {
     Set<String> currentVars;
     ProblemContext problemCtx;
 
-    public Collector(ShopContext ctx) {
+    public SymbolCollector(ShopContext ctx) {
         this.shopCtx = ctx;
     }
 

@@ -31,7 +31,7 @@ public abstract class Term {
     /**
      * 合并b的binding到res上
      */
-    public static void mergeIfAbsent(Term[] res, Term[] b) {
+    public static void merge(Term[] res, Term[] b) {
         for (int i = 0; i < res.length; i++) {
             if (res[i] == null) {
                 res[i] = b[i];

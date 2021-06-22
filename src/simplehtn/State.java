@@ -16,6 +16,7 @@ public class State {
      * 之后的列表是关于这个predicate的参数列表，这里都是ground的
      */
     private final List<List<Term>> atoms;
+    private final List<String> constSymbols;
 
     /**
      * 当前如果有(:protection a)状态，下一个action不能选择 del effect里包含a 的operator
@@ -36,11 +37,13 @@ public class State {
 
         atoms = new ArrayList<>(constantSize);
         protections = new ArrayList<>(constantSize);
-
+        constSymbols = new ArrayList<>(constantSize);
         for (int i = 0; i < constantSize; i++) {
             atoms.add(new ArrayList<>());
             protections.add(new ArrayList<>());
         }
+        // 依赖于constSymbol是LinkedHashMap，有序
+        constSymbols.addAll(problem.domain.constSymbols.keySet());
 
         this.axioms = problem.domain.axioms;
 
@@ -128,7 +131,6 @@ public class State {
     public Term[] nextSatisfier(Predicate p, MyIterator me) {
         Term[] nextB;
         Term[] retVal;
-        Term t;
 
         //-- If we are still looking into the atoms to prove the predicate (i.e.,
         //-- we have not started looking into the axioms),
@@ -136,7 +138,7 @@ public class State {
             //-- Iterate over the appropriate Vector to find atoms that can satisfy
             //-- the given predicate.
             while (me.index < me.vec.size()) {
-                t = (Term) me.vec.get(me.index++);
+                Term t = me.vec.get(me.index++);
                 // 比如p 是个(block ?x)
                 retVal = p.findUnifier(t);
 
@@ -200,7 +202,7 @@ public class State {
                 //-- axiom. If there is a next satisfier,
                 while ((nextB = me.pre.nextSatisfier(this)) != null) {
                     //-- Merge the two bindings.
-                    Term.mergeIfAbsent(nextB, me.binding);
+                    Term.merge(nextB, me.binding);
 
                     //-- Calculate the instance of the axiom we are using.
                     Predicate groundAxiomHead = me.ax.getHead().applySubstitution(nextB);
@@ -265,5 +267,33 @@ public class State {
         for (Predicate pDel : changed.protectionDel) {
             addProtection(pDel);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        for (List<Term> atomList : atoms) {
+            String id = constSymbols.get(i);
+            for (Term oneAtomParam : atomList) {
+                sb.append("(").append(id);
+                sb.append(" ").append(oneAtomParam.toUnpairString());
+                sb.append(")\n");
+            }
+            i++;
+        }
+
+        for (List<NumberedPredicate> protection : protections) {
+            for (NumberedPredicate np : protection) {
+                sb.append("(:protection ").append(np.getPredicate().getName());
+                sb.append(" ").append(np.getPredicate().getParam().toUnpairString());
+                sb.append(")");
+                if (np.getNumber() > 1) {
+                    sb.append(" ").append(np.getNumber());
+                }
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
     }
 }

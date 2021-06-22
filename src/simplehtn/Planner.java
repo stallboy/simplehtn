@@ -3,7 +3,6 @@ package simplehtn;
 import java.util.LinkedList;
 import java.util.List;
 
-
 /**
  * planner算法
  */
@@ -80,7 +79,7 @@ public class Planner {
                     StateChanged changed = new StateChanged();
                     Term[] satisfier;
                     while ((satisfier = pre.nextSatisfier(state)) != null) {
-                        Term.mergeIfAbsent(satisfier, unifier);
+                        Term.merge(satisfier, unifier);
 
                         changed.clear();
                         if (op.apply(satisfier, state, changed)) {
@@ -98,7 +97,7 @@ public class Planner {
                         state.undo(changed);
                     }
                 }
-                // 整个primitive task失败，回退，似乎没起啥作用？？？
+                // 整个primitive task失败，回退，之后从t0里去找下一个unordered的任务
                 tl.undoDecompose();
 
             } else {
@@ -116,7 +115,7 @@ public class Planner {
 
                         Term[] satisfier;
                         while ((satisfier = pre.nextSatisfier(state)) != null) {
-                            Term.mergeIfAbsent(satisfier, unifier);
+                            Term.merge(satisfier, unifier);
 
                             tl.decompose(sub.tasklist.bind(satisfier));
                             step.reduced(t, sub.label, tl);
